@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗻 Viaje a Japón - Itinerario 13 Días (2-14 Junio)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Yu Gothic', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #faf8f3 0%, #f5f1e8 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #2c2416;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #c41e3a;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ff69b4, #c41e3a);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #6b5d52;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .quick-links {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .quick-links-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #c41e3a;
+            margin-bottom: 15px;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .link-button {
+            display: block;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.85em;
+        }
+
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px 0;
+            border-right: 2px solid #e8dcc8;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: 600;
+            color: #c41e3a;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #8b7a6f;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border-left: 6px solid #c41e3a;
+        }
+
+        .day-card:hover {
+            box-shadow: 0 8px 30px rgba(196, 30, 58, 0.15);
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #2c2416 0%, #4a3d34 100%);
+            color: white;
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .day-header:hover {
+            background: linear-gradient(135deg, #1a100c 0%, #3a2d24 100%);
+        }
+
+        .day-info {
+            flex: 1;
+        }
+
+        .day-number {
+            font-size: 2em;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .day-date {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .day-title {
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .day-region {
+            font-size: 0.9em;
+            opacity: 0.85;
+            margin-top: 5px;
+        }
+
+        .toggle-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .toggle-btn:hover {
+            background: white;
+            color: #2c2416;
+        }
+
+        .day-content {
+            padding: 30px;
+            display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .day-content.active {
+            display: block;
+            max-height: 10000px;
+        }
+
+        .section-title {
+            font-size: 0.95em;
+            text-transform: uppercase;
+            color: #c41e3a;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 20px 0 15px 0;
+        }
+
+        .activities {
+            color: #4a4a4a;
+            font-size: 0.95em;
+            line-height: 1.8;
+            padding-left: 20px;
+            border-left: 3px solid #e8dcc8;
+        }
+
+        .activities strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .transport-section {
+            background: linear-gradient(135deg, #eaf4fb 0%, #f0f8ff 100%);
+            border: 1px solid #b8d8ee;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .transport-title {
+            font-size: 0.95em;
+            text-transform: uppercase;
+            color: #1a5f8a;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .transport-step {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .transport-route {
+            font-weight: 600;
+            color: #2c2416;
+            margin-bottom: 8px;
+        }
+
+        .transport-details {
+            color: #4a4a4a;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .transport-price {
+            font-weight: 600;
+            color: #1a5f8a;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .transport-link {
+            display: inline-block;
+            background: #1a5f8a;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 5px 5px 0;
+            font-size: 0.8em;
+        }
+
+        .transport-link:hover {
+            background: #0d3d5c;
+        }
+
+        .transport-tip {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #6b5d52;
+        }
+
+        .cost-breakdown {
+            background: linear-gradient(135deg, #fef5e7 0%, #fef9f0 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #e8dcc8;
+        }
+
+        .cost-title {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            color: #c41e3a;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .cost-category {
+            margin-bottom: 15px;
+        }
+
+        .cost-category-title {
+            font-weight: 600;
+            color: #c41e3a;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .cost-detail {
+            padding-left: 15px;
+            font-size: 0.9em;
+            color: #4a4a4a;
+            line-height: 1.8;
+        }
+
+        .cost-total {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            border: 2px solid #c41e3a;
+        }
+
+        .cost-total-label {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .cost-total-amount {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #c41e3a;
+        }
+
+        .map-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
+        .map-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+        }
+
+        .location-count {
+            display: inline-block;
+            background: #f0ebe3;
+            color: #8b7a6f;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .note {
+            background: linear-gradient(135deg, #fff8e1 0%, #fffef5 100%);
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #6b5d52;
+            line-height: 1.6;
+        }
+
+        .note strong {
+            color: #c41e3a;
+        }
+
+        .reservas-box {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #c41e3a;
+        }
+
+        .reservas-title {
+            font-weight: 600;
+            color: #c41e3a;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .reservas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .reservas-link {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1a5f8a;
+            border: 1px solid #b8d8ee;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+        }
+
+        .reservas-link:hover {
+            background: #f0f8ff;
+            border-color: #c41e3a;
+        }
+
+        .total-trip-cost {
+            background: linear-gradient(135deg, #2c2416 0%, #4a3d34 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .total-trip-cost h3 {
+            font-size: 1.2em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .total-trip-cost .big-number {
+            font-size: 3em;
+            font-weight: 600;
+            color: #ffb81c;
+            margin-bottom: 10px;
+        }
+
+        .total-trip-cost .per-person {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #8b7a6f;
+            border-top: 2px solid #e8dcc8;
+        }
+
+        .footer-text {
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+
+        .exchange-note {
+            background: #e8f4f8;
+            border-left: 4px solid #1a5f8a;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #2c2416;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .day-header {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .toggle-btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reservas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 2px solid #e8dcc8;
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗻 VIAJE A JAPÓN</h1>
+            <p class="subtitle">Itinerario 2-14 de Junio • Tokio • Fujikawaguchiko • Kyoto • Osaka</p>
+        </div>
+
+        <div class="exchange-note">
+            <strong>💱 Tipo de Cambio Utilizado:</strong> 1 JPY = $0.06 MXN (Consulta el tipo de cambio actual antes de viajar)
+        </div>
+
+        <div class="quick-links">
+            <div class="quick-links-title">⚡ COMPRAS Y RESERVAS ESENCIALES</div>
+            <div class="quick-links-grid">
+                <a href="https://www.suica.or.jp/english/" class="link-button">🎫 Comprar Suica</a>
+                <a href="https://www.jrpass.com/buy" class="link-button">🎫 JR Pass</a>
+                <a href="https://www.disneyland.co.jp/en/" class="link-button">🎫 Disneyland</a>
+                <a href="https://www.usj.co.jp/web/en/us/" class="link-button">🎫 Universal Studios</a>
+                <a href="https://www.shibuya-sky.jp/en/" class="link-button">🎫 Shibuya Sky</a>
+                <a href="https://www.teamlab.art/e/" class="link-button">🎫 TeamLab</a>
+                <a href="https://www.jreast.co.jp/e/nex/" class="link-button">🚄 Narita Express</a>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">13</span>
+                <span class="stat-label">Días</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Ciudades</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">Vuelo 9:35 AM</span>
+                <span class="stat-label">Día 14 de Junio</span>
+            </div>
+        </div>
+
+        <!-- DÍA 1 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 1</div>
+                    <div class="day-date">2 de Junio</div>
+                    <div class="day-title">Tokio: Tsukiji, Yoyogi, Shibuya</div>
+                    <div class="day-region">Mercado, parque y hora dorada</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>10:00am:</strong> Tsukiji Fish Market<br>
+                    <strong>1:00pm:</strong> Yoyogi Park<br>
+                    <strong>3:00pm:</strong> Center Gai<br>
+                    <strong>5:00pm:</strong> Shibuya Sky (hora dorada 6:00-6:45)<br>
+                    <strong>7:00pm:</strong> Onitsuka Tiger, Don Quijote, Shibuya Crossing, Hachiko
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Aeropuerto Narita → Tsukiji Fish Market</div>
+                        <div class="transport-details">Narita Express (N'EX) hasta Tokyo Station (60min, ¥3,070), luego Metro Ginza Line hasta Tsukiji-Hongwanji Station (5min, ¥210).</div>
+                        <div class="transport-price">N'EX: $184 MXN × 2 = $368 MXN | Metro: $13 MXN × 2 = $26 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Tsukiji → Yoyogi Park</div>
+                        <div class="transport-details">Metro Oedo Line + Marunouchi Line (~35min, ¥400).</div>
+                        <div class="transport-price">$24 MXN × 2 = $48 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Yoyogi → Center Gai → Shibuya Sky</div>
+                        <div class="transport-details">A pie (10-15min), luego Metro Ginza Line (¥180).</div>
+                        <div class="transport-price">$11 MXN × 2 = $22 MXN</div>
+                        <a href="https://www.shibuya-sky.jp/en/" class="transport-link">🎫 Reservar Sky</a>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 COMPRA SUICA HOY EN AEROPUERTO: ¥2,000 (~$120 MXN). Te ahorra tiempo todo el viaje.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • N'EX: $368 MXN<br>
+                            • Suica Card (2 × ¥2,000): $240 MXN<br>
+                            • Saldo Suica usado: $94 MXN<br>
+                            <strong>Subtotal: $702 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Shibuya Sky: ¥2,100 × 2 = $252 MXN<br>
+                            • Otros (gratis): $0 MXN<br>
+                            <strong>Subtotal: $252 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast Tsukiji: ¥2,000 × 2 = $240 MXN<br>
+                            • Lunch: ¥2,500 × 2 = $300 MXN<br>
+                            • Café/Snacks: ¥1,500 × 2 = $180 MXN<br>
+                            <strong>Subtotal: $720 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 1:</span>
+                        <span class="cost-total-amount">$1,674 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Tsukiji+Fish+Market,Tokyo&destination=Hachiko,Shibuya,Tokyo&waypoints=Yoyogi+Park,Tokyo|Center+Gai,Shibuya,Tokyo|Shibuya+Sky,Tokyo" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">7 puntos</span>
+
+                <div class="note">
+                    <strong>⏱️ 8-9 horas</strong> | Llega temprano a Tsukiji. <strong>Compra Suica en el aeropuerto.</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 2 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 2</div>
+                    <div class="day-date">3 de Junio</div>
+                    <div class="day-title">Tokyo Disneyland - Día Completo</div>
+                    <div class="day-region">Parque temático</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>9:00am-10:00pm:</strong> Tokyo Disneyland completo (rides, castillo, espectáculos)
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Hotel → Tokyo Disneyland</div>
+                        <div class="transport-details">JR Keyo Line desde tu estación (~15-20min, ¥250 ida).</div>
+                        <div class="transport-price">¥500 × 2 = $60 MXN (ida/vuelta)</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Llega 8:30am. Trae cómodo para 20,000+ pasos.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • JR (ida/vuelta): $60 MXN<br>
+                            <strong>Subtotal: $60 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Entrada Disneyland: ¥8,900 × 2 = $1,068 MXN<br>
+                            <strong>Subtotal: $1,068 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast: ¥1,500 × 2 = $180 MXN<br>
+                            • Comida dentro: ¥3,500 × 2 = $420 MXN<br>
+                            <strong>Subtotal: $600 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 2:</span>
+                        <span class="cost-total-amount">$1,728 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Tokyo+Station&destination=Tokyo+Disneyland,Urayasu" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">1 parque</span>
+
+                <div class="note">
+                    <strong>⏱️ 12-13 horas</strong> | Reserva entrada CON ANTICIPACIÓN. Descansa después.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 3 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 3</div>
+                    <div class="day-date">4 de Junio</div>
+                    <div class="day-title">Tokio Centro: Templos y Arte</div>
+                    <div class="day-region">Gotokuji, Meiji, Takeshita, Tokyo Tower, TeamLab</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>7:00am:</strong> Gotokuji Temple<br>
+                    <strong>11:00am:</strong> Santuario Meiji + Meiji Jingu Gyoen<br>
+                    <strong>1:00pm:</strong> Takeshita Street<br>
+                    <strong>4:00pm:</strong> Tokyo Tower<br>
+                    <strong>5:00pm:</strong> Roppongi City View<br>
+                    <strong>7:00pm:</strong> TeamLab Borderless
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Hotel → Gotokuji → Meiji → Takeshita → Tokyo Tower → Roppongi → TeamLab</div>
+                        <div class="transport-details">Total transporte estimado: ~¥1,450 por persona usando metro Ginza, Yamanote, Oedo, Yurikamome.</div>
+                        <div class="transport-price">¥1,450 × 2 = $174 MXN</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Reserva TeamLab Borderless ANTES de viajar. Gotokuji temprano es mágico.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • Metros/JR total: $174 MXN<br>
+                            <strong>Subtotal: $174 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Gotokuji: Gratis<br>
+                            • Meiji Shrine: ¥500 × 2 = $60 MXN<br>
+                            • Tokyo Tower: ¥1,100 × 2 = $132 MXN<br>
+                            • City View: ¥1,500 × 2 = $180 MXN<br>
+                            • TeamLab Borderless: ¥3,200 × 2 = $384 MXN<br>
+                            <strong>Subtotal: $756 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch: ¥2,000 × 2 = $240 MXN<br>
+                            • Dinner: ¥3,000 × 2 = $360 MXN<br>
+                            <strong>Subtotal: $780 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 3:</span>
+                        <span class="cost-total-amount">$1,710 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Gotokuji+Temple,Tokyo&destination=teamLab+Borderless,Tokyo&waypoints=Meiji+Shrine,Tokyo|Takeshita+Street,Tokyo|Tokyo+Tower,Tokyo|Roppongi+Hills,Tokyo" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">7 puntos</span>
+
+                <div class="note">
+                    <strong>⏱️ 10-11 horas</strong> | Día intenso. Reserva TeamLab YA.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 4 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 4</div>
+                    <div class="day-date">5 de Junio</div>
+                    <div class="day-title">Day Trip: Kamakura y Yokohama</div>
+                    <div class="day-region">Hokokuji, Hasedera, Cup Noodle, Minato Mirai</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>7:30am:</strong> Hokokuji Bamboo Forest + matcha<br>
+                    <strong>10:00am:</strong> Komachi Street<br>
+                    <strong>1:00pm:</strong> Hasedera Temple<br>
+                    <strong>3:30pm:</strong> Cup Noodle Museum (Yokohama)<br>
+                    <strong>5:00pm:</strong> Chinatown<br>
+                    <strong>6:30pm:</strong> Osanbashi Pier<br>
+                    <strong>7:30pm:</strong> Minato Mirai iluminado<br>
+                    <strong>Regreso antes 12:00am</strong>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • JR Tokyo-Kamakura-Yokohama-Tokyo: ~$240 MXN<br>
+                            • Taxis/buses Kamakura: ~$60 MXN<br>
+                            • Enoden Tram: $27 MXN<br>
+                            <strong>Subtotal: $327 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Hokokuji + Matcha: ¥1,100 × 2 = $132 MXN<br>
+                            • Hasedera: ¥400 × 2 = $48 MXN<br>
+                            • Cup Noodle: ¥900 × 2 = $108 MXN<br>
+                            • Otros: Gratis<br>
+                            <strong>Subtotal: $288 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch Komachi: ¥2,000 × 2 = $240 MXN<br>
+                            • Dinner Yokohama: ¥3,000 × 2 = $360 MXN<br>
+                            <strong>Subtotal: $780 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 4:</span>
+                        <span class="cost-total-amount">$1,395 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Tokyo+Station&destination=Tokyo+Station&waypoints=Hokokuji+Bamboo+Forest,Kamakura|Komachi+Street,Kamakura|Hasedera+Temple,Kamakura|Cup+Noodle+Museum,Yokohama|Chinatown,Yokohama|Minato+Mirai,Yokohama" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">7 puntos</span>
+
+                <div class="note">
+                    <strong>⏱️ 12-13 horas</strong> | Day trip exhaustivo. Madruga a Hokokuji.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 5 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 5</div>
+                    <div class="day-date">6 de Junio</div>
+                    <div class="day-title">Tokio: Descanso y Viaje a Kawaguchiko</div>
+                    <div class="day-region">Preparación y salida a Monte Fuji</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>MAÑANA:</strong> Descanso, breakfast tranquilo<br>
+                    <strong>1:00pm:</strong> Viaje a Fujikawaguchiko (tren 1.5-2h)<br>
+                    <strong>3:00pm:</strong> Llega Kawaguchiko, check-in hospedaje<br>
+                    <strong>4:00pm:</strong> Mt. Fuji Panoramic Ropeway<br>
+                    <strong>6:00pm:</strong> Oshino Hakkai (5 lagos)<br>
+                    <strong>Atardecer:</strong> Vistas de Lake Kawaguchiko
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Tokyo Station → Fujikawaguchiko</div>
+                        <div class="transport-details">JR Chuo Limited Express hasta Otsuki (90min, ¥7,070), luego Fujisubaru Line hasta Kawaguchiko (50min, ¥2,360).</div>
+                        <div class="transport-price">Total: ¥9,430 × 2 = $1,132 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Kawaguchiko Station → Mt. Fuji Ropeway → Oshino</div>
+                        <div class="transport-details">Bus desde Kawaguchiko a Ropeway (20min, ¥1,000), luego bus a Oshino (20min, ¥1,000).</div>
+                        <div class="transport-price">¥2,000 × 2 = $240 MXN</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 DORMIR EN KAWAGUCHIKO ESTA NOCHE. Hospedaje Ryokan con vistas al Fuji.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • Tren Tokyo-Kawaguchiko: $1,132 MXN<br>
+                            • Buses locales: $240 MXN<br>
+                            <strong>Subtotal: $1,372 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Mt. Fuji Ropeway: ¥800 × 2 = $96 MXN<br>
+                            • Oshino Hakkai: Gratis<br>
+                            <strong>Subtotal: $96 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🏨 Hospedaje + 🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Ryokan (2 noches): ~¥8,000-12,000 (~$480-720 MXN)<br>
+                            • Comida y cena: ¥3,000 × 2 = $360 MXN<br>
+                            <strong>Subtotal: ~$720-840 MXN (tomamos $780 MXN promedio)</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 5 (sin hospedaje completo):</span>
+                        <span class="cost-total-amount">$2,248 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Tokyo+Station&destination=Lake+Kawaguchiko,Fujikawaguchiko&waypoints=Mt.+Fuji+Ropeway,Fujikawaguchiko|Oshino+Hakkai,Fujikawaguchiko" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">2-3 puntos</span>
+
+                <div class="note">
+                    <strong>⏱️ 5-6 horas + exploración</strong> | DUERME EN KAWAGUCHIKO. Vistas de Monte Fuji al atardecer (clima permitan).
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 6 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 6</div>
+                    <div class="day-date">7 de Junio</div>
+                    <div class="day-title">Kawaguchiko → Tokio (maletas) → Kyoto</div>
+                    <div class="day-region">Última mañana Fuji, recogida maletas, viaje a Kyoto</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>6:00am:</strong> Últimas vistas Monte Fuji desde Kawaguchiko<br>
+                    <strong>11:00am:</strong> Tren de regreso a Tokyo Station<br>
+                    <strong>1:00pm:</strong> Recoger maletas (luggage storage)<br>
+                    <strong>2:30pm:</strong> Shinkansen directo a Kyoto<br>
+                    <strong>5:30pm:</strong> Llega Kyoto, hospedaje<br>
+                    <strong>Noche:</strong> Cena tranquila en Kyoto
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Kawaguchiko → Tokyo Station</div>
+                        <div class="transport-details">Fujisubaru Line + JR Chuo (inverso, ~140min total, ¥9,430).</div>
+                        <div class="transport-price">¥9,430 × 2 = $1,132 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Tokyo Station → Luggage Storage → Tokyo Station</div>
+                        <div class="transport-details">Ecbo Cloak o estaciones JR. Almacenamiento: ~¥2,000-3,000 para 2 maletas por noche.</div>
+                        <div class="transport-price">~$180 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Tokyo Station → Kyoto (Shinkansen)</div>
+                        <div class="transport-details">Shinkansen Nozomi directo (2h 15min, ¥13,870) O Hikari (2h 45min, ¥13,320).</div>
+                        <div class="transport-price">¥13,870 × 2 = $1,664 MXN (Nozomi)</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Llegada tranquila. Hospédate en centro Kyoto para acceso fácil a todos los templos.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • Fujisubaru + JR de regreso: $1,132 MXN<br>
+                            • Luggage storage: $180 MXN<br>
+                            • Shinkansen Tokyo-Kyoto: $1,664 MXN<br>
+                            <strong>Subtotal: $2,976 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🏨 Hospedaje Kyoto (primera noche):</div>
+                        <div class="cost-detail">
+                            • Hotel/Ryokan: ~¥5,000-8,000 (~$300-480 MXN)<br>
+                            <strong>Subtotal: ~$390 MXN (promedio)</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast Kawaguchiko: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch tren: ¥2,000 × 2 = $240 MXN<br>
+                            • Dinner Kyoto: ¥3,000 × 2 = $360 MXN<br>
+                            <strong>Subtotal: $780 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 6 (sin hospedaje completo):</span>
+                        <span class="cost-total-amount">$4,146 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Kawaguchiko,Fujikawaguchiko&destination=Kyoto+Station,Kyoto&waypoints=Tokyo+Station,Tokyo" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">Viaje de transición</span>
+
+                <div class="note">
+                    <strong>⏱️ ~5-6 horas viaje</strong> | Día de transición. Recoge maletas y ve directo a Kyoto. DUERME EN KYOTO.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 7 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 7</div>
+                    <div class="day-date">8 de Junio</div>
+                    <div class="day-title">Kyoto: Fushimi Inari, Tofuku-ji, Gion</div>
+                    <div class="day-region">Templos icónicos y barrio geisha</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>MADRUGADA (6:30am):</strong> Fushimi Inari Taisha (primero, pocos turistas)<br>
+                    <strong>11:00am:</strong> Tofuku-ji Temple<br>
+                    <strong>1:00pm:</strong> Almuerzo<br>
+                    <strong>3:00pm:</strong> Yasaka Shrine<br>
+                    <strong>5:00pm:</strong> Gion (barrio geisha)<br>
+                    <strong>7:00pm:</strong> Cena tradicional
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Hotel → Fushimi Inari</div>
+                        <div class="transport-details">JR Nara Line desde Kyoto a Inari Station (15min, ¥240), camina 2min.</div>
+                        <div class="transport-price">¥240 × 2 = $29 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Fushimi Inari → Tofuku-ji</div>
+                        <div class="transport-details">JR Nara Line de regreso a Kyoto (¥240), luego Keihan Main Line a Tofukuji (¥220).</div>
+                        <div class="transport-price">¥460 × 2 = $55 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Tofuku-ji → Yasaka / Gion</div>
+                        <div class="transport-details">Keihan Line a Gojo (¥220), luego Hankyu a Kawaramachi (¥190). Gion y Yasaka a pie (~10-15min).</div>
+                        <div class="transport-price">¥410 × 2 = $49 MXN</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Fushimi Inari a las 6:30am es MÁGICO. Los mil torii rojos. Gion de noche es romántico.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • JR/Keihan/Hankyu total: ¥1,110 × 2 = $133 MXN<br>
+                            <strong>Subtotal: $133 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Fushimi Inari: Gratis<br>
+                            • Tofuku-ji: ¥600 × 2 = $72 MXN<br>
+                            • Yasaka: Gratis<br>
+                            • Gion: Gratis (exploración)<br>
+                            <strong>Subtotal: $72 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast temprano: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch: ¥2,500 × 2 = $300 MXN<br>
+                            • Dinner Gion (más caro): ¥4,000 × 2 = $480 MXN<br>
+                            <strong>Subtotal: $960 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 7:</span>
+                        <span class="cost-total-amount">$1,165 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Kyoto+Station&destination=Gion,Kyoto&waypoints=Fushimi+Inari+Taisha,Kyoto|Tofuku-ji+Temple,Kyoto|Yasaka+Shrine,Kyoto" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">5 puntos</span>
+
+                <div class="note">
+                    <strong>⏱️ 9-10 horas</strong> | Fushimi Inari temprano es lo mejor. Gion de noche es perfecto para parejas.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 8 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 8</div>
+                    <div class="day-date">9 de Junio</div>
+                    <div class="day-title">Kyoto: Kiyomizu, Higashiyama</div>
+                    <div class="day-region">Templos icónicos, calles antiguas</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>9:00am:</strong> Kiyomizu-dera + The Stage (vista 500¥)<br>
+                    <strong>11:00am:</strong> Higashiyama (barrio histórico)<br>
+                    <strong>1:00pm:</strong> Lunch en Sannen-zaka o Ninen-zaka<br>
+                    <strong>3:00pm:</strong> Sannen-zaka & Ninen-zaka (shopping/exploración)
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Hotel → Kiyomizu</div>
+                        <div class="transport-details">Hankyu Line a Kawaramachi (¥190), luego bus 100/101 (¥100) o camina 20min. Keihan Line a Kiyomizu-Gojo (¥220).</div>
+                        <div class="transport-price">~¥290-310 × 2 = $35-37 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Kiyomizu → Higashiyama → Sannen/Ninen-zaka</div>
+                        <div class="transport-details">Todo está adyacente. Camina o usa mismo bus. ~10-15min a pie.</div>
+                        <div class="transport-price">Gratis (caminando)</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Higashiyama es el barrio más hermoso y tradicional. Sannen/Ninen-zaka son perfectas para parejas. The Stage: vista 360° increíble (500¥).
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • Bus/Metro total: $36 MXN (promedio)<br>
+                            <strong>Subtotal: $36 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Kiyomizu: ¥400 × 2 = $48 MXN<br>
+                            • The Stage: ¥500 × 2 = $60 MXN<br>
+                            • Higashiyama, calles: Gratis<br>
+                            <strong>Subtotal: $108 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch Sannen-zaka: ¥2,500 × 2 = $300 MXN<br>
+                            • Dinner: ¥2,500 × 2 = $300 MXN<br>
+                            <strong>Subtotal: $780 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 8:</span>
+                        <span class="cost-total-amount">$924 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Kyoto+Central&destination=Sannen-zaka,Kyoto&waypoints=Kiyomizu-dera,Kyoto|Higashiyama,Kyoto" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">3 puntos</span>
+
+                <div class="note">
+                    <strong>⏱️ 6-7 horas</strong> | Día relajado y hermoso. Perfecto para parejas. The Stage: vista panorámica de Kyoto.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 9 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 9</div>
+                    <div class="day-date">10 de Junio</div>
+                    <div class="day-title">Day Trip: Nara - Ciervos y Templos</div>
+                    <div class="day-region">Todai-ji, Nara Park, Kasuga, Katsuo-ji</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>9:00am:</strong> Todai-ji (Gran Salón del Buda)<br>
+                    <strong>11:00am:</strong> Nara Park (interactúa con ciervos)<br>
+                    <strong>1:00pm:</strong> Almuerzo<br>
+                    <strong>2:30pm:</strong> Kasuga Taisha<br>
+                    <strong>4:00pm:</strong> Katsuo-ji Temple<br>
+                    <strong>6:00pm:</strong> Regreso a Kyoto<br>
+                    <strong>DORMIR EN OSAKA ESTA NOCHE</strong>
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Kyoto Station → Nara</div>
+                        <div class="transport-details">JR Nara Line directo (45min, ¥840) O Kintetsu Line.</div>
+                        <div class="transport-price">¥840 × 2 = $101 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Nara Station → Todai-ji</div>
+                        <div class="transport-details">Bus (15min, ¥100) o camina 20min.</div>
+                        <div class="transport-price">¥100 × 2 = $12 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Todai-ji → Nara Park → Kasuga → Katsuo-ji</div>
+                        <div class="transport-details">Todo está caminando en Nara Park. Katsuo-ji bus (20min, ¥200).</div>
+                        <div class="transport-price">¥200 × 2 = $24 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Katsuo-ji → Nara Station → Osaka</div>
+                        <div class="transport-details">Bus a Nara (20min, ¥200), luego JR Nara Line a Osaka (30min, ¥560).</div>
+                        <div class="transport-price">¥760 × 2 = $91 MXN</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Ciervos amistosos pero muerden. Compra "shika crackers" en estación. DORMIR EN OSAKA ESTA NOCHE.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • JR Kyoto-Nara-Osaka roundtrip: ¥3,240 × 2 = $389 MXN<br>
+                            • Buses locales: $36 MXN<br>
+                            <strong>Subtotal: $425 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Todai-ji: ¥600 × 2 = $72 MXN<br>
+                            • Nara Park: Gratis<br>
+                            • Kasuga: ¥300 × 2 = $36 MXN<br>
+                            • Katsuo-ji: ¥300 × 2 = $36 MXN<br>
+                            • Shika crackers: ¥500 × 2 = $60 MXN<br>
+                            <strong>Subtotal: $204 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🏨 Hospedaje Osaka (primera noche):</div>
+                        <div class="cost-detail">
+                            • Hotel Namba: ~¥5,000-7,000 (~$300-420 MXN)<br>
+                            <strong>Subtotal: ~$360 MXN (promedio)</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast Kyoto: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch Nara: ¥2,000 × 2 = $240 MXN<br>
+                            • Dinner Osaka: ¥2,500 × 2 = $300 MXN<br>
+                            <strong>Subtotal: $720 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 9 (sin hospedaje completo):</span>
+                        <span class="cost-total-amount">$1,709 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Kyoto+Station&destination=Osaka+Station&waypoints=Todai-ji,Nara|Nara+Park,Nara|Kasuga+Taisha,Nara|Katsuo-ji,Nara" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">4 puntos</span>
+
+                <div class="note">
+                    <strong>⏱️ 8-9 horas</strong> | Day trip a Nara. Los ciervos son la atracción. DUERME EN OSAKA ESTA NOCHE.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 10 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 10</div>
+                    <div class="day-date">11 de Junio</div>
+                    <div class="day-title">Osaka: Universal Studios Japan - DÍA COMPLETO</div>
+                    <div class="day-region">Parque temático sin parar</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>8:30am-7:00pm:</strong> UNIVERSAL STUDIOS JAPAN SOLAMENTE<br>
+                    Rides, Hogwarts, Marvel, Minions, espectáculos<br>
+                    <strong>7:30pm:</strong> Cena ligera en Osaka (opcional)
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Hotel Namba → Universal Studios</div>
+                        <div class="transport-details">JR Yumesaki Line desde Osaka Station (acceso por Metro Midosuji desde Namba, ¥230) directo a Universal City Station (15min, ¥180).</div>
+                        <div class="transport-price">¥410 × 2 = $49 MXN ida/vuelta</div>
+                        <a href="https://www.usj.co.jp/web/en/us/tickets" class="transport-link">🎫 USJ Tickets</a>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 <strong>CRITICAL:</strong> Express Pass RECOMENDADO (¥10,000+ evita filas 2-3h). Llega 8:30am (antes de abrir) para optimizar horario. Trae cómodo.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • Metro + JR (ida/vuelta): $49 MXN<br>
+                            <strong>Subtotal: $49 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • USJ entrada: ¥8,900 × 2 = $1,068 MXN<br>
+                            • Express Pass (RECOMENDADO): ¥10,000 × 2 = $1,200 MXN<br>
+                            <strong>Subtotal: $2,268 MXN (con Express)</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida + Snacks:</div>
+                        <div class="cost-detail">
+                            • Breakfast: ¥1,500 × 2 = $180 MXN<br>
+                            • Snacks/Comida en USJ: ¥3,000 × 2 = $360 MXN<br>
+                            • Cena opcional: ¥2,000 × 2 = $240 MXN<br>
+                            <strong>Subtotal: $780 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 10 (con Express Pass):</span>
+                        <span class="cost-total-amount">$3,097 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Osaka+Station&destination=Universal+City+Station,Osaka" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">1 parque</span>
+
+                <div class="note">
+                    <strong>⏱️ 10-11 horas</strong> | Día INTENSO dedicado 100% a Universal. NO otros lugares. Express Pass RECOMENDADO.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 11 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 11</div>
+                    <div class="day-date">12 de Junio</div>
+                    <div class="day-title">Osaka: Mercados, Puentes, Templos</div>
+                    <div class="day-region">Kuromon, Dotonbori, Shinsaibashi, Ebisu, Namba</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>9:00am:</strong> Kuromon Ishiga Market (sushi, marisco fresco)<br>
+                    <strong>11:00am:</strong> Dotonbori (shopping, entretenimiento)<br>
+                    <strong>1:00pm:</strong> Almuerzo Dotonbori<br>
+                    <strong>3:00pm:</strong> Shinsaibashi-Suji (compras de marca)<br>
+                    <strong>5:00pm:</strong> Ebisu Bridge (fotos, atardecer)<br>
+                    <strong>7:00pm:</strong> Namba Yasaka Shrine (templo nocturno)<br>
+                    <strong>8:00pm:</strong> Cena final en Osaka
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Hotel Namba → Kuromon Ishiga Market</div>
+                        <div class="transport-details">Metro Chuo Line desde Namba a Nipponbashi (¥230), camina 5min al mercado.</div>
+                        <div class="transport-price">¥230 × 2 = $28 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Kuromon → Dotonbori → Shinsaibashi → Ebisu → Namba</div>
+                        <div class="transport-details">Todos están muy cercanos. Dotonbori, Shinsaibashi, Ebisu Bridge, Namba Yasaka todo caminando ~5-15min entre cada uno.</div>
+                        <div class="transport-price">~¥200 (metro mínimo) = $24 MXN</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Kuromon Ishiga: INCREÍBLE para parejas (sushi fresco directo del pescador). Dotonbori de noche: caótico, colorido, delicioso. Ebisu Bridge: romántico al atardecer.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • Metro + caminatas: $52 MXN<br>
+                            <strong>Subtotal: $52 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🎫 Actividades:</div>
+                        <div class="cost-detail">
+                            • Kuromon, Dotonbori, Shinsaibashi, Ebisu, Namba: Gratis (exploración)<br>
+                            <strong>Subtotal: Gratis</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch Kuromon (sushi fresco): ¥3,000 × 2 = $360 MXN<br>
+                            • Dinner Dotonbori: ¥4,000 × 2 = $480 MXN<br>
+                            <strong>Subtotal: $1,020 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 11:</span>
+                        <span class="cost-total-amount">$1,072 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Namba,Osaka&destination=Namba+Yasaka+Shrine,Osaka&waypoints=Kuromon+Ishiga+Market,Osaka|Dotonbori,Osaka|Shinsaibashi,Osaka|Ebisu+Bridge,Osaka" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">6 puntos principales</span>
+
+                <div class="note">
+                    <strong>⏱️ 8-9 horas</strong> | Día relajado. Kuromon para parejas: increíble. Dotonbori de noche: caótico y delicioso. Ebisu Bridge: romántico. DUERME EN OSAKA.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 12 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 12</div>
+                    <div class="day-date">13 de Junio</div>
+                    <div class="day-title">Osaka → Tokio (exploración + compras)</div>
+                    <div class="day-region">Shinkansen + últimas compras en Shibuya</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>9:00am:</strong> Desayuno tranquilo, check-out<br>
+                    <strong>11:00am:</strong> Shinkansen a Tokio (2.5h)<br>
+                    <strong>2:00pm:</strong> Llega Tokio, check-in hotel<br>
+                    <strong>3:00-5:00pm:</strong> Shibuya/Ikebukuro (últimas compras, souvenirs)<br>
+                    <strong>Noche:</strong> Cena tranquila en Tokio<br>
+                    <strong>DORMIR EN TOKIO ESTA NOCHE - MAÑANA VUELO 9:35 AM</strong>
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte detallado</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">Hotel Osaka → Shin-Osaka Station</div>
+                        <div class="transport-details">Metro desde Namba a Yodoyabashi, JR Kyoto Line a Shin-Osaka (30min, ¥220).</div>
+                        <div class="transport-price">¥220 × 2 = $26 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Shin-Osaka → Tokyo Station (Shinkansen)</div>
+                        <div class="transport-details">Shinkansen Nozomi (RÁPIDO, 2h 15min, ¥13,870) O Hikari (2h 45min, ¥13,320).</div>
+                        <div class="transport-price">¥13,870 × 2 = $1,664 MXN (Nozomi)</div>
+                        <a href="https://www.jrcentral.co.jp/en/tickets/shinkansen/" class="transport-link">🚄 Reservar Shinkansen</a>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Tokyo Station → Hotel (Shibuya/Shinjuku)</div>
+                        <div class="transport-details">JR Yamanote Line (¥180).</div>
+                        <div class="transport-price">¥180 × 2 = $22 MXN</div>
+                    </div>
+
+                    <div class="transport-step">
+                        <div class="transport-route">Shibuya/Ikebukuro (shopping + cena)</div>
+                        <div class="transport-details">Caminatas y metro local (~¥200).</div>
+                        <div class="transport-price">~$24 MXN</div>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 Viaje tranquilo. Últimas compras de souvenirs. Descansa bien para el vuelo temprano mañana.
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • Metro Osaka: $26 MXN<br>
+                            • Shinkansen: $1,664 MXN<br>
+                            • JR/Metro Tokyo: $46 MXN<br>
+                            <strong>Subtotal: $1,736 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🏨 Hospedaje Tokio (última noche):</div>
+                        <div class="cost-detail">
+                            • Hotel Tokio: ~¥4,000-6,000 (~$240-360 MXN)<br>
+                            <strong>Subtotal: ~$300 MXN (promedio)</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🛍️ + 🍜 Comida + Souvenirs:</div>
+                        <div class="cost-detail">
+                            • Breakfast: ¥1,500 × 2 = $180 MXN<br>
+                            • Lunch tren: ¥2,000 × 2 = $240 MXN<br>
+                            • Souvenirs finales: ~¥5,000-8,000 (~$300-480 MXN)<br>
+                            • Dinner Tokio: ¥3,000 × 2 = $360 MXN<br>
+                            <strong>Subtotal: ~$1,080-1,260 MXN (tomamos $1,170 promedio)</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 12 (sin hospedaje completo):</span>
+                        <span class="cost-total-amount">$3,206 MXN</span>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Osaka+Station&destination=Tokyo+Station&waypoints=Shibuya,Tokyo" class="map-button" target="_blank">📍 Ver ruta en Maps</a>
+                <span class="location-count">Viaje final</span>
+
+                <div class="note">
+                    <strong>⏱️ ~5 horas viaje + compras</strong> | DUERME BIEN EN TOKIO. MAÑANA VUELO 9:35 AM. Lee instrucciones Día 13.
+                </div>
+            </div>
+        </div>
+
+        <!-- DÍA 13 -->
+        <div class="day-card">
+            <div class="day-header" onclick="toggleDay(this)">
+                <div class="day-info">
+                    <div class="day-number">DÍA 13</div>
+                    <div class="day-date">14 de Junio</div>
+                    <div class="day-title">🛫 VUELO 9:35 AM - REGRESO A CASA</div>
+                    <div class="day-region">Salida muy temprano hacia aeropuerto</div>
+                </div>
+                <button class="toggle-btn">Expandir ▼</button>
+            </div>
+            <div class="day-content">
+                <div class="section-title">🌸 Itinerario del día</div>
+                <div class="activities">
+                    <strong>⚠️ CRÍTICO - LEE BIEN:</strong><br>
+                    Tu vuelo es a las 9:35 AM desde Narita o Haneda<br>
+                    Necesitas estar en el aeropuerto 3 HORAS ANTES (6:35 AM)<br>
+                    <br>
+                    <strong>3:00-4:00 AM:</strong> DESPIERTA, desayuno ligero<br>
+                    <strong>4:30 AM MÁXIMO:</strong> Salida del hotel hacia aeropuerto<br>
+                    <strong>5:30 AM:</strong> N'EX sale hacia Narita (60min) O Monorail sale hacia Haneda (30min)<br>
+                    <strong>6:35 AM:</strong> Llega aeropuerto, check-in<br>
+                    <strong>7:35 AM:</strong> Security, gates<br>
+                    <strong>9:35 AM:</strong> DESPEGUE ✈️
+                </div>
+
+                <div class="transport-section">
+                    <div class="transport-title">🚇 Transporte CRÍTICO</div>
+                    
+                    <div class="transport-step">
+                        <div class="transport-route">⚠️ Hotel → Aeropuerto (MADRUGADA)</div>
+                        <div class="transport-details">
+                            <strong>OPCIÓN 1 - NARITA (recomendado si llegas desde oeste):</strong><br>
+                            N'EX desde Tokyo/Shinjuku/Ikebukuro Station (~60min, ¥3,070). Sale cada 15-20min desde 4:20am.<br>
+                            <strong>OPCIÓN 2 - HANEDA (más rápido, si puedes):</strong><br>
+                            Monorail desde Hamamatsucho (~30min, ¥700) O Keikyu Line desde Shinbashi (~25min, ¥700).
+                        </div>
+                        <div class="transport-price">N'EX: ¥3,070 × 2 = $368 MXN | Haneda: ¥700 × 2 = $84 MXN</div>
+                        <a href="https://www.jreast.co.jp/e/nex/" class="transport-link">🎫 N'EX Info</a>
+                        <a href="https://www.tokyo-monorail.co.jp/english/" class="transport-link">🚄 Haneda Monorail</a>
+                    </div>
+
+                    <div class="transport-tip">
+                        💡 <strong>CRÍTICO:</strong> Si vuelo es 9:35 AM, DEBES ESTAR EN AEROPUERTO 6:35 AM.<br>
+                        - N'EX toma 60min → SALIR del hotel 4:30 AM MÁXIMO<br>
+                        - Haneda toma 30min → SALIR 5:45 AM MÁXIMO<br>
+                        <strong>NO LLEGUES TARDE. Vuela bien.</strong>
+                    </div>
+                </div>
+
+                <div class="cost-breakdown">
+                    <div class="cost-title">💰 Costos para 2 personas</div>
+                    
+                    <div class="cost-category">
+                        <div class="cost-category-title">🚇 Transporte:</div>
+                        <div class="cost-detail">
+                            • N'EX a Narita: $368 MXN<br>
+                            <strong>O</strong><br>
+                            • Haneda (Monorail/Keikyu): $84 MXN<br>
+                            <strong>Subtotal: $368 MXN (Narita) o $84 MXN (Haneda)</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-category">
+                        <div class="cost-category-title">🍜 Comida:</div>
+                        <div class="cost-detail">
+                            • Breakfast ligero (hotel/convenience): ¥1,000 × 2 = $120 MXN<br>
+                            <strong>Subtotal: $120 MXN</strong>
+                        </div>
+                    </div>
+
+                    <div class="cost-total">
+                        <span class="cost-total-label">Total día 13:</span>
+                        <span class="cost-total-amount">$488 MXN (Narita) o $204 MXN (Haneda)</span>
+                    </div>
+                </div>
+
+                <div class="note">
+                    <strong>⚠️⚠️⚠️ ADVERTENCIA CRÍTICA ⚠️⚠️⚠️</strong><br>
+                    <strong>VUELO: 9:35 AM</strong><br>
+                    <strong>Necesitas estar en aeropuerto: 6:35 AM (3 horas antes)</strong><br>
+                    <strong>Necesitas salir del hotel: 4:30 AM MÁXIMO</strong><br>
+                    <br>
+                    ✅ Duerme bien el día anterior<br>
+                    ✅ Prepara maletas la noche del 12<br>
+                    ✅ Ponte alarma para las 3:00 AM<br>
+                    ✅ Desayuno ligero<br>
+                    ✅ SALIDA 4:30 AM MÁXIMO<br>
+                    ✅ NO PIERDAS EL VUELO<br>
+                    <br>
+                    <strong>¡Buen viaje de regreso! 🛫</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- COSTO TOTAL -->
+        <div class="total-trip-cost">
+            <h3>COSTO TOTAL DEL VIAJE PARA 2 PERSONAS (13 DÍAS)</h3>
+            <div class="big-number">$30,500-35,000 MXN</div>
+            <div class="per-person">~$15,250-17,500 MXN por persona (~$900-1,050 USD)</div>
+            <p style="margin-top: 15px; font-size: 0.95em; line-height: 1.6; opacity: 0.95;">
+                ⚠️ <strong>NOTA IMPORTANTE:</strong> Este costo incluye:<br>
+                ✅ Transporte local (Suica, metros, trenes, Shinkansen)<br>
+                ✅ Todas las actividades principales (parques, templos, museos)<br>
+                ✅ Comida estimada (restaurantes locales)<br>
+                ✅ Hospedaje ~60% del costo real<br>
+                ❌ NO incluye:<br>
+                ❌ Vuelos internacionales (agrega $8,000-12,000 MXN por persona)<br>
+                ❌ Hospedaje COMPLETO (agrega $12,000-20,000 MXN más por persona)<br>
+                ❌ Seguros de viaje<br>
+                ❌ Compras personales adicionales<br>
+                <br>
+                <strong>PRESUPUESTO TOTAL REALISTA: $70,000-90,000 MXN para 2 personas (~$4,200-5,400 USD)</strong><br>
+                (Incluye vuelos + hospedaje + transporte + comida + actividades)
+            </p>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">
+                <strong>🎌 CHECKLIST FINAL ANTES DE PARTIR:</strong><br>
+                ✅ Pasaporte vigente (mínimo 6 meses)<br>
+                ✅ Vuelo reservado (9:35 AM)<br>
+                ✅ Hospedaje en: Tokio (5n), Kawaguchiko (1n), Kyoto (3n), Osaka (3n), Tokio (1n)<br>
+                ✅ Reserva: Disneyland, TeamLab, Ghibli, Universal Studios, Shibuya Sky<br>
+                ✅ Compra Suica Card online o en aeropuerto (¥2,000 = $120 MXN)<br>
+                ✅ Descarga Google Maps sin conexión (Tokio + Kyoto)<br>
+                ✅ Apps: Tabelog (restaurantes), PayPay (pagos), Google Translate<br>
+                ✅ Notifica a tu banco (viaje a Japón)<br>
+                ✅ Seguro de viaje<br>
+                ✅ Prepara maletas noche del 12 de junio<br>
+                ✅ Alarma para 3:00 AM el 14 de junio<br>
+                <br>
+                <strong>💡 MONEY TIPS:</strong><br>
+                • 1 JPY = $0.06 MXN (aproximado - verifica antes de viajar)<br>
+                • Suica funciona EN TODO: metro, buses, JR, 7-Eleven, restaurantes<br>
+                • Efectivo NECESARIO: retira ¥100,000-150,000 (~$6,000-9,000 MXN) mínimo<br>
+                • Propinas: NO necesarias (incluso ofensivo)<br>
+                • Comer local: ¥1,000-2,000 por persona (baratos vs turísticos)<br>
+                • ATM 7-Eleven: mejor tasa que aeropuerto<br>
+                <br>
+                <strong>✨ ¡DISFRUTA CADA MOMENTO CON TU PAREJA! 🗻 🎌</strong><br>
+                Este es el viaje de tu vida. Toma fotos, come bien, descansa cuando necesites.<br>
+                Las mejores memorias son las que hacemos juntos.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDay(element) {
+            const content = element.nextElementSibling;
+            const btn = element.querySelector('.toggle-btn');
+            
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                btn.textContent = 'Contraer ▲';
+            } else {
+                btn.textContent = 'Expandir ▼';
+            }
+        }
+    </script>
+</body>
+</html>
